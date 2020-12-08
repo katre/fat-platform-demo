@@ -22,7 +22,13 @@ fat_platform(
     ],
 )
 
-load("//rule:rule.bzl", "sample")
+load("//rule:rule.bzl", "fat_binary", "sample")
+
+fat_binary(
+    name = "fat_binary",
+    dep = ":sample",
+    message = "fat binary says",
+)
 
 sample(
     name = "sample",
