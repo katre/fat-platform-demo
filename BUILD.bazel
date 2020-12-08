@@ -1,0 +1,30 @@
+platform(
+    name = "linux",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+platform(
+    name = "windows",
+    constraint_values = [
+        "@platforms//os:windows",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+fat_platform(
+    name = "fat_platform",
+    platforms = [
+        ":linux",
+        ":windows",
+    ],
+)
+
+load("//rule:rule.bzl", "sample")
+
+sample(
+    name = "sample",
+    message = "Hello",
+)
