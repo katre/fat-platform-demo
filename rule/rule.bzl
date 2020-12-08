@@ -4,12 +4,12 @@ def _sample_impl(ctx):
     toolchain = ctx.toolchains["//toolchain:toolchain_type"]
     rule_message = ctx.attr.message
 
-    message = 'sample message: "%s", toolchain message: "%s"\n' % (rule_message, toolchain.message)
+    message = 'sample message: "%s", toolchain message: "%s"' % (rule_message, toolchain.message)
 
     log = ctx.outputs.log
     ctx.actions.write(
         output = log,
-        content = message,
+        content = message + "\n",
     )
     message_info = _MessageInfo(message = message)
     return [
@@ -42,7 +42,7 @@ def _fat_binary_impl(ctx):
     log = ctx.outputs.log
     ctx.actions.write(
         output = log,
-        content = message,
+        content = message + "\n",
     )
     message_info = _MessageInfo(message = message)
     return [
